@@ -1,6 +1,7 @@
 ---
 layout: post
 comments: true
+published: true
 title:  "TEST POST 1"
 excerpt: "Excerpt #1 here"
 date:   2022-12-02 22:00:00
