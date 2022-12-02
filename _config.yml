@@ -21,14 +21,14 @@ footer-links:
   email:
   facebook:
   flickr:
-  github: https://github.com/MaxMenenberg
-  instagram: https://www.instagram.com/maxmenenberg/
-  linkedin: https://www.linkedin.com/in/max-menenberg-b8864267/
+  github: MaxMenenberg
+  instagram: maxmenenberg
+  linkedin: max-menenberg-b8864267
   pinterest:
   rss: # just type anything here for a working RSS icon
   twitter:
   stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
-  youtube: https://www.youtube.com/channel/UC7K46GK9V_FNWrRnFbo88_g # channel/<your_long_string> or user/<user-name>
+  youtube: UC7K46GK9V_FNWrRnFbo88_g # channel/<your_long_string> or user/<user-name>
   googleplus: # anything in your profile username that comes after plus.google.com/
 
 
