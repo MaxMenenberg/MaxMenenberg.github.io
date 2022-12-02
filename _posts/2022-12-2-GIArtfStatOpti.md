@@ -17,4 +17,9 @@ I have been playing Genshin Impact (GI) since launch and I would say I have put 
 
 Below I have provided a simplified version of the GI damage formula. This simplified formula assumes that LOTS of things are held constant and/or set to 0 or 1. Basically we are looking at the formula through the lens of hitting a speacial dev mode test dumming with a single attack from a character igoring things like passive buffs, elemental reactions, and other things like that. 
 
-Display equation: $$ DMG = \left((ATK_{Base})(ATK_{\%}) + ATK_{flat}\right)\times (1 + DMG_{Bonus}) \times (1 + (CR)*(CD)) $$
+<div style="text-align:center;"><img src="/assets/GiArtiOpti/LateXEquations/dmgFormula.PNG"></div>
+
+For those who aren't familiar, the crit rate (CR) and the crit damage (CD) values are multiplied together to represent long term average damage bonus from the crit stats. Its like asking the questions, "given the CR/CD pair I have, what would be an equivalent CD value for a CR = 100%?".
+
+$$\{CR, CD\} = \{100\%, (CR)(CD)\}$$
+
