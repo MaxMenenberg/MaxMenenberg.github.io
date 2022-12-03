@@ -26,7 +26,7 @@ For those who aren't familiar, the crit rate (CR) and the crit damage (CD) value
 I'm also going to assume the main stat triple for the sands, goblet, and circlet to be ATK%, DmgBonus%, and Crit Rate respectively. All of the methods I discuss in this post can be replicated on a different set of main stats. I thought about allowing the main stats to be variables to optimize, but that started to go down a path I didn't want to follow. Another assumption will be that the base attack of our test character will be 1000. This is a nice even number that is a reasonable value for 5-star character/weapon pairs. I'm also going to completely disregard flat attack sub-stat rolls because since we are assuming 1000 base attack we know the ATK% roll will always contribute a larger value than the flat attack roll. The last assumption will be that all artifacts will start with 4 sub-stats, all max rolls,every subsequent roll will be a max roll, and will always contain ATK%, CR, and CD if it can (e.g. the Crit Rate circlet cant have a crit rate sub-stat). This last assumption basically lets us turn on dev mode and just select the sub-stats we want. Just as a reminder the max rolls for  these stats are 
 
 | Sub-Stat    |   Max Roll  |
-| ----------- | ----------- |
+|-------------|-------------|
 | ATK%        |    5.8%     |
 | Crit Rate   |    3.9%     |
 | Crit Damage |    7.8%     |
