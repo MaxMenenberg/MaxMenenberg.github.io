@@ -45,6 +45,6 @@ Fortunately for this problem there is the well established method of [Lagrange m
 Step #1: Define g(x,y,z) by "moving" all terms of the constraint equation to one side. I.e. g(x,y,z) = x + y + z - 38
 Step #2: Define the Lagrangian function $\mathcal{L}(x,y,z,\lambda) = f(x,y,z) + \lambda g(x,y,z)$
 
-TEST3
+TEST4
 $$E=mc^2$$
 

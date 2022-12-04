@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html>
 
-	<!-- for mathjax support -->
-    {% if page.usemathjax %}
-      <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({
-        TeX: { equationNumbers: { autoNumber: "AMS" } }
-        });
-      </script>
-      <script type="text/javascript" async src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    {% endif %}
-
   <head>
     <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
 
@@ -24,6 +14,10 @@
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
 
     <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+	
+	{% if page.use_math %}
+	{% include mathjax_support.html %}
+	{% endif %}
 	
   </head>
 
