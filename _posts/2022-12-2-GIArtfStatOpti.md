@@ -42,13 +42,19 @@ This is the point where we need to include the contraint of number of artifact r
 
 Fortunately for this problem there is the well established method of [Lagrange multipliers](https://en.wikipedia.org/wiki/Lagrange_multiplier) which is specifically motivated by the problem of optimizing a function with respect to an equality constraint. Below I outline the process for using Lagrange multipliers given that you have a function to maximize f(x,y,z) and an equality constraint. For this outline I will explicetly write out all variables, but just know this method works regardless the number of variables. 
 
-Step #1: Define g(x,y,z) by "moving" all terms of the constraint equation to one side. I.e. $g(x,y,z) = x + y + z - 38$ 
-Step #2: Define the Lagrangian function $\mathcal{L}(x,y,z,\lambda) = f(x,y,z) + \lambda g(x,y,z)$ 
+**Step #1:** Define g(x,y,z) by "moving" all terms of the constraint equation to one side. I.e. $g(x,y,z) = x + y + z - 38$ 
+
+**Step #2:** Define the Lagrangian function $\mathcal{L}(x,y,z,\lambda) = f(x,y,z) + \lambda g(x,y,z)$ 
 $\mathcal{L}(x,y,z,\lambda) = (1000\times(1 + 0.466 + 0.058x) + 311)\times(1 + (0.361 + 0.039y)\times(0.5 + 0.078z)) + \lambda(x + y + z - 38)$ 
-Step #3: Calculate the gradient of the Lagrangian $\nabla\mathcal{L}(x,y,z,\lambda) = \left( \frac{\partial\mathcal{L}}{\partial x}, \frac{\partial\mathcal{L}}{\partial y}, \frac{\partial\mathcal{L}}{\partial z}, \frac{\partial\mathcal{L}}{\partial \lambda}\right)$ 
+
+**Step #3:** Calculate the gradient of the Lagrangian $\nabla\mathcal{L}(x,y,z,\lambda) = \left( \frac{\partial\mathcal{L}}{\partial x}, \frac{\partial\mathcal{L}}{\partial y}, \frac{\partial\mathcal{L}}{\partial z}, \frac{\partial\mathcal{L}}{\partial \lambda}\right)$ 
+
 $\frac{\partial\mathcal{L}}{\partial x} = 58 \times (1 + (0.361 + 0.039y)\times(0.5 + 0.078z))$ 
+
 $\frac{\partial\mathcal{L}}{\partial y} = 0.039 \times (1000\times(1 + 0.466 + 0.058x) + 311)\times(0.5 + 0.078z)$ 
+
 $\frac{\partial\mathcal{L}}{\partial z} = 0.078 \times (1000\times(1 + 0.466 + 0.058x) + 311) \times (0.361 + 0.039y)$ 
+
 $\frac{\partial\mathcal{L}}{\partial \lambda} = x + y + z - 38$ 
 
 
