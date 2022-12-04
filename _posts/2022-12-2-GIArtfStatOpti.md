@@ -57,6 +57,16 @@ $\frac{\partial\mathcal{L}}{\partial z} = 0.078 \times (1000\times(1 + 0.466 + 0
 
 $\frac{\partial\mathcal{L}}{\partial \lambda} = x + y + z - 38$ 
 
+**Step #4:** Construct a system of equations by setting $\nabla\mathcal{L}(x,y,z,\lambda) = 0$. I.E. $\frac{\partial\mathcal{L}}{\partial x} = 0 , \frac{\partial\mathcal{L}}{\partial y} = 0, \frac{\partial\mathcal{L}}{\partial z} = 0, \frac{\partial\mathcal{L}}{\partial \lambda} = 0$
+
+$0 = 58 \times (1 + (0.361 + 0.039y)\times(0.5 + 0.078z))$ 
+
+$0 = 0.039 \times (1000\times(1 + 0.466 + 0.058x) + 311)\times(0.5 + 0.078z)$ 
+
+$0 = 0.078 \times (1000\times(1 + 0.466 + 0.058x) + 311) \times (0.361 + 0.039y)$ 
+
+$0 = x + y + z - 38$ 
+
 
 
 TEST5
