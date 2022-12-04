@@ -15,7 +15,7 @@ I have been playing Genshin Impact (GI) since launch and I would say I have put 
 
 ## Damage Formula and Assumptions
 
-Below I have provided a simplified version of the GI damage formula. This simplified formula assumes that LOTS of things are held constant and/or set to 0 or 1. Basically we are looking at the formula through the lens of hitting a speacial dev mode test dumming with a single attack from a character igoring things like passive buffs, elemental reactions, and other things like that. 
+Below I have provided a simplified version of the GI damage formula. This simplified formula assumes that LOTS of things are held constant and/or set to 0 or 1. Basically we are looking at the formula through the lens of hitting a speacial dev mode test dumming with a single attack from a character igoring things like passive buffs, elemental reactions, energy recharge/team rotation, and other things like that. 
 
 <div style="text-align:center;"><img src="/assets/GiArtiOpti/LateXEquations/dmgFormula.PNG"></div>
 
@@ -42,34 +42,44 @@ This is the point where we need to include the contraint of number of artifact r
 
 Fortunately for this problem there is the well established method of [Lagrange multipliers](https://en.wikipedia.org/wiki/Lagrange_multiplier) which is specifically motivated by the problem of optimizing a function with respect to an equality constraint. Below I outline the process for using Lagrange multipliers given that you have a function to maximize f(x,y,z) and an equality constraint. For this outline I will explicetly write out all variables, but just know this method works regardless the number of variables. 
 
-**Step #1:** Define g(x,y,z) by "moving" all terms of the constraint equation to one side. I.e. $g(x,y,z) = x + y + z - 38$ 
+**Step #1:** Define $g(x,y,z)$ by "moving" all terms of the constraint equation to one side. I.e. $g(x,y,z) = x + y + z - 38$ 
 
 **Step #2:** Define the Lagrangian function $\mathcal{L}(x,y,z,\lambda) = f(x,y,z) + \lambda g(x,y,z)$ 
 $\mathcal{L}(x,y,z,\lambda) = (1000\times(1 + 0.466 + 0.058x) + 311)\times(1 + (0.361 + 0.039y)\times(0.5 + 0.078z)) + \lambda(x + y + z - 38)$ 
 
 **Step #3:** Calculate the gradient of the Lagrangian $\nabla\mathcal{L}(x,y,z,\lambda) = \left( \frac{\partial\mathcal{L}}{\partial x}, \frac{\partial\mathcal{L}}{\partial y}, \frac{\partial\mathcal{L}}{\partial z}, \frac{\partial\mathcal{L}}{\partial \lambda}\right)$ 
 
-$\frac{\partial\mathcal{L}}{\partial x} = 58 \times (1 + (0.361 + 0.039y)\times(0.5 + 0.078z))$ 
+$\frac{\partial\mathcal{L}}{\partial x} = 58 \times (1 + (0.361 + 0.039y)\times(0.5 + 0.078z)) + \lambda$ 
 
-$\frac{\partial\mathcal{L}}{\partial y} = 0.039 \times (1000\times(1 + 0.466 + 0.058x) + 311)\times(0.5 + 0.078z)$ 
+$\frac{\partial\mathcal{L}}{\partial y} = 0.039 \times (1000\times(1 + 0.466 + 0.058x) + 311)\times(0.5 + 0.078z) + \lambda$ 
 
-$\frac{\partial\mathcal{L}}{\partial z} = 0.078 \times (1000\times(1 + 0.466 + 0.058x) + 311) \times (0.361 + 0.039y)$ 
+$\frac{\partial\mathcal{L}}{\partial z} = 0.078 \times (1000\times(1 + 0.466 + 0.058x) + 311) \times (0.361 + 0.039y) + \lambda$ 
 
 $\frac{\partial\mathcal{L}}{\partial \lambda} = x + y + z - 38$ 
 
 **Step #4:** Construct a system of equations by setting $\nabla\mathcal{L}(x,y,z,\lambda) = 0$. I.E. $\frac{\partial\mathcal{L}}{\partial x} = 0 , \frac{\partial\mathcal{L}}{\partial y} = 0, \frac{\partial\mathcal{L}}{\partial z} = 0, \frac{\partial\mathcal{L}}{\partial \lambda} = 0$
 
-$0 = 58 \times (1 + (0.361 + 0.039y)\times(0.5 + 0.078z))$ 
+$0 = 58 \times (1 + (0.361 + 0.039y)\times(0.5 + 0.078z)) + \lambda$ 
 
-$0 = 0.039 \times (1000\times(1 + 0.466 + 0.058x) + 311)\times(0.5 + 0.078z)$ 
+$0 = 0.039 \times (1000\times(1 + 0.466 + 0.058x) + 311)\times(0.5 + 0.078z) + \lambda$ 
 
-$0 = 0.078 \times (1000\times(1 + 0.466 + 0.058x) + 311) \times (0.361 + 0.039y)$ 
+$0 = 0.078 \times (1000\times(1 + 0.466 + 0.058x) + 311) \times (0.361 + 0.039y) + \lambda$ 
 
 $0 = x + y + z - 38$ 
 
+Once we are at **Step #4** there are 4 equations with 4 unknowns and the last step is to solve. I started trying to solve this by hand hoping to get a clean closed form solution...long story short it turned into a mess, and I gave up and used the source of all truth WolframAlpha. Giving these 4 equations to WolframAlpha's system of equation solver yielded 4 solutions.
+
+Solution #1: $(x, y, z, \lambda) \rightarrow (-30.63, -12.99, 81.62, 0)$
+Solution #2: $(x, y, z, \lambda) \rightarrow (-30.63, 78.78, -10.14, 0)$
+Solution #3: $(x, y, z, \lambda) \rightarrow (6.81, 14.17, 17.01, -154.80)$
+Solution #4: $(x, y, z, \lambda) \rightarrow (44.31, -4.57, -1.732, -61.86)$
+
+Solutions 1, 2, and 4 clearly aren't value because they have negative value for x, y, or z, which remember is suppose to describe how many rolls go into a certain sub-stat. Only solution 3 has an almost valid solution with the only issue being that our final values for x, y, and z must be intergers. This can be fixed easily with rounding, giving the solution of $(x, y, z) \rightarrow (7, 14, 17)$. This is telling us that the best sub-stats to maximize damage for ATK% Sands, DmgBonus% Goblet, and Crit Rate Circlet should be
+
+$7 \times 0.058 = 0.406 \rightarrow ATK +40.6% $
+$14 \times 0.039 = 0.546 \rightarrow CRIT Rate +54.6% $
+$17 \times 0.078 = 1.326 \rightarrow CRIT DMG +132.6% $
 
 
-TEST5
-$$E=mc^2$$
-$E=mc^2$
+with the total Crit Rate = 90.7% and Crit Dmg = 182.6%, and with a total ATK% bonus of 87.2%. 
 
