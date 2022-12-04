@@ -70,16 +70,20 @@ $0 = x + y + z - 38$
 Once we are at **Step #4** there are 4 equations with 4 unknowns and the last step is to solve. I started trying to solve this by hand hoping to get a clean closed form solution...long story short it turned into a mess, and I gave up and used the source of all truth WolframAlpha. Giving these 4 equations to WolframAlpha's system of equation solver yielded 4 solutions.
 
 Solution #1: $(x, y, z, \lambda) \rightarrow (-30.63, -12.99, 81.62, 0)$
+
 Solution #2: $(x, y, z, \lambda) \rightarrow (-30.63, 78.78, -10.14, 0)$
+
 Solution #3: $(x, y, z, \lambda) \rightarrow (6.81, 14.17, 17.01, -154.80)$
+
 Solution #4: $(x, y, z, \lambda) \rightarrow (44.31, -4.57, -1.732, -61.86)$
 
 Solutions 1, 2, and 4 clearly aren't value because they have negative value for x, y, or z, which remember is suppose to describe how many rolls go into a certain sub-stat. Only solution 3 has an almost valid solution with the only issue being that our final values for x, y, and z must be intergers. This can be fixed easily with rounding, giving the solution of $(x, y, z) \rightarrow (7, 14, 17)$. This is telling us that the best sub-stats to maximize damage for ATK% Sands, DmgBonus% Goblet, and Crit Rate Circlet should be
 
 $7 \times 0.058 = 0.406 \rightarrow ATK +40.6% $
-$14 \times 0.039 = 0.546 \rightarrow CRIT Rate +54.6% $
-$17 \times 0.078 = 1.326 \rightarrow CRIT DMG +132.6% $
 
+$14 \times 0.039 = 0.546 \rightarrow CRIT Rate +54.6% $
+
+$17 \times 0.078 = 1.326 \rightarrow CRIT DMG +132.6% $
 
 with the total Crit Rate = 90.7% and Crit Dmg = 182.6%, and with a total ATK% bonus of 87.2%. 
 
