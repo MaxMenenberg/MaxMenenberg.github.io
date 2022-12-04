@@ -85,7 +85,7 @@ $14 \times 0.039 = 0.546 \rightarrow CRIT\;Rate +54.6\% $
 
 $17 \times 0.078 = 1.326 \rightarrow CRIT\;DMG +132.6\% $
 
-with the total Crit Rate = 90.7% and Crit Dmg = 182.6%, and with a total ATK% bonus of 87.2%. As a sanity check I wrote a python program that did a brute force search through all possible combinations of different sub-stat rolls for the simplified damage formula. 
+with the total Crit Rate = 90.7% and Crit Dmg = 182.6%, and with a total ATK% bonus of 87.2%. As a sanity check I wrote a python program that did a brute force search through all possible combinations of different sub-stat rolls for the simplified damage formula. As hoped, the program returns the same result as the solution from Lagrange multipliers. 
 
 ~~~python
 import numpy as np
@@ -118,6 +118,8 @@ for xn in range(len(x)):
                     bestSubStats = np.array([x[xn], y[yn], z[zn]])
                                 
 print(bestSubStats)
+#Returned Results
+[ 7. 14. 17.]
 ~~~
 
-
+## Discussion
