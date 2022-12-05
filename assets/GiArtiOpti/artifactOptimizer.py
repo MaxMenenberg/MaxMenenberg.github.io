@@ -21,14 +21,10 @@ maxDmg = 0;
 for xn in range(len(x)):
     for yn in range(len(y)):
         for zn in range(len(z)):
-            
             if x[xn] + y[yn] + z[zn] <= maxNumberOfRolls:
-            
                 dmg = f(x[xn], y[yn], z[zn])
-                
                 if dmg > maxDmg:
                     maxDmg = dmg
                     bestSubStats = np.array([x[xn], y[yn], z[zn]])
-                
-                
+                                
 print(bestSubStats)
