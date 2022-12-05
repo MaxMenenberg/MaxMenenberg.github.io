@@ -6,7 +6,7 @@ usemathjax: true
 title:  "Genshin Impact: Deriving Optimal Artifact Sub-Stat Distribution For Maximum Damage"
 excerpt: "Most advice from Genshin Image (GI) influencers suggest that the best way to maximize damage is to 
 invest all artifact subs-tats towards crit rate and crit damage. In this post I will derive the optimal distribution of sub-stats."
-date:   2022-12-03 01:00:00
+date:   2022-12-02 01:00:00
 ---
 
 ## Introduction
