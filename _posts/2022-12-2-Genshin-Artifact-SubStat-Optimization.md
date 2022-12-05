@@ -122,7 +122,7 @@ for xn in range(len(x)):
 print(bestSubStats)
 # Returned Results
 [ 7. 14. 17.]
-{% highlight python %}
+{% endhighlight %}
 
 ## Some Closing Comments
 
