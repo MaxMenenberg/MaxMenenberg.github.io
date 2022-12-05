@@ -120,7 +120,7 @@ for xn in range(len(x)):
                     bestSubStats = np.array([x[xn], y[yn], z[zn]])
                                 
 print(bestSubStats)
-#Returned Results
+# Returned Results
 [ 7. 14. 17.]
 {% highlight python %}
 
