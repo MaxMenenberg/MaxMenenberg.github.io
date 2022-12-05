@@ -3,10 +3,11 @@ layout: post
 comments: true
 published: true
 usemathjax: true
+future: true
 title:  "Genshin Impact: Deriving Optimal Artifact Sub-Stat Distribution For Maximum Damage"
 excerpt: "Most advice from Genshin Image (GI) influencers suggest that the best way to maximize damage is to 
 invest all artifact subs-tats towards crit rate and crit damage. In this post I will derive the optimal distribution of sub-stats."
-date:   2022-12-02 01:00:00
+date:   2022-12-04 01:00:00
 ---
 
 ## Introduction
@@ -122,7 +123,26 @@ print(bestSubStats)
 [ 7. 14. 17.]
 {% highlight python %}
 
-## THIS IS A TESt
+## Some Closing Comments
+
+### Crit Ratio
+
+One thing that has always bugged me about the GI community is how they have butchered the word *ratio*. People will always say things like "wow this guy has a really good crit ratio" in response to a character having high crit rate and crit damage. But this isn't how ratios work, if you want a ratio to be big you need to make one value big (the numerator) and the other value small (the denominator). However the notion of crits in genshin impact is a *product*, you want both values to be high such that when they are multiplied together the result is large. We should be taking about crit products, not crit ratios. 
+
+I think some of the origin of the word ratio in the GI community come from the way the developers distribute crit rate and crit damage stats in the game. They come in these pairs that them selves that have a ratio of 2:1 (CritDmg:CritRate). We see this in artifact rolls, weapon sub-stats, and character ascension stats. There is also a common piece of advice that players should aim for their characters to have a 2:1 CritDmg/CritRate ratio which never made sense to me. Obviously 140%/70% and 200%/100% are both 2:1 CritDmg/CritRate ratios but we all know that one of them is better than the other. This just goes back to me complaining about the use of the word ratio. However, the ironic thing is that my finals results from Lagrange multipliers of Crit Rate = 90.7% and Crit Dmg = 182.6% perfectly fit that 2:1 advice that always bugged me. LOL. 
+
+### Different Main Stats
+
+The method in this post could be applied to different sets of main stats like (ATK%, ATK%, Crit Rate),  (ATK%, DmgBonus%, and Crit Dmg), (ATK%, ATK%, ATK%), to see which sub-stats are the best, and which main stats are the best. I can quickly mention that the case of (ATK%, DmgBonus%, and Crit Rate) and (ATK%, DmgBonus%, and Crit Dmg) are equivalent with some re-balancing of the sub-stats.
+
+### The 311 Feather
+
+If GI had no notion of flat attack and only had the ATK% stat, then there wouldn't be much of a point for having the damage bonus stat. I would love to get some insight in how the developers came up with the flat attack value for the feather and how it factored into their stat distributions and game balancing. If anyone know why they might have chose this value to be 311, and its broader consequences for the damage formula, please let me know. 
+
+
+### Conclusion
+
+Remember ATK% stat isn't that bad, and you didn't necessarily get unlucky if you missed a crit roll for an ATK%. I really like when games have their damage formulas published so players can effectivly optimize (or try) their characters. I hope you found this post interesting. 
 
 
 
